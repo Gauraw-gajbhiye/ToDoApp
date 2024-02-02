@@ -2,13 +2,12 @@ import React, { useState } from 'react'
 
 function Form(props) {
     const [name, setname] = useState("");
-    const [newName, setNewName] = useState("");
 
 
     const handlechange = (e) => {
         setname(e.target.value)
         // console.log(name);
-        setNewName(e.target.value)
+        // setNewName(e.target.value)
     }
     const handleSubmit = (e) => {
         e.preventDefault();

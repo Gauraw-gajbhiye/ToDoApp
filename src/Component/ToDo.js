@@ -2,21 +2,37 @@ import React, { useState } from 'react'
 
 function ToDo(props) {
     const [isEditing, setEditing] = useState(false)
+    const [newName, setNewName] = useState("");
+
+    const handleChange = (e) => {
+        setNewName(e.target.value)
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        props.editTask(props.id, newName);
+        setNewName("");
+        setEditing(false);
+    }
+
     const editingTemplate = (
-        <form>
+        <form onSubmit={handleSubmit}>
             <div>
                 <label>New name for {props.name}</label>
                 <input id={props.id} type='text'
-                // value={newName} 
-                // onChange={handleChange}
+                    value={newName}
+                    onChange={handleChange}
                 />
             </div>
             <div>
-                <button className='border-2 border-red-500 m-2 p-2'>
+                <button className='border-2 border-red-500 m-2 p-2'
+                    onClick={() => setEditing(false)}
+                >
                     Cancel
                     <span> renaming {props.name}</span>
                 </button>
-                <button className='border-2 border-red-500 m-2 p-2 bg-red-600 text-white'>Save
+                <button className='border-2 border-red-500 m-2 p-2 bg-red-600 text-white'>
+                    Save
                     <span> new name for {props.name}</span>
 
                 </button>
