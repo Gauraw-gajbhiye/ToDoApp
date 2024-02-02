@@ -6,7 +6,7 @@ function Form(props) {
 
 
     const handlechange = (e) => {
-        // setname(e.target.value)
+        setname(e.target.value)
         // console.log(name);
         setNewName(e.target.value)
     }
